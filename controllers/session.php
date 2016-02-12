@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../models/connect.php';
 
 session_start();// Starts the session
 

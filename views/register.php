@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require_once '../models/connect.php';
 
 /*$nameErr = $passErr = $emailErr = "";
 $username = $password = $email = "";
@@ -51,28 +51,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <html>
 <head>
-<title>Form</title>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+	<link rel="stylesheet" href="css/registerstyle.css">
+  <title>Form</title>
 </head>
 <body>
 
-<div id="main">
-  <h1>Submit data using HTML into a database (using mysqli)</h1>
+<div class="register-container" id="main">
   <div id="login">
-    <h2>Register New User</h2>
     <hr/>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
-      <label>Username :</label>
-      <input type="text" name="username" id="username" required="required" value="<?php //echo htmlspecialchars($username);?>"/><span class="error">* <?php //echo $nameErr;?></span><br /><br />
-      <label>Password :</label>
-      <input type="password" name="password" id="password" required="required" value="<?php //echo htmlspecialchars($password);?>"/><span class="error">* <?php //echo $passErr;?></span><br/><br />
-      <label>Email :</label>
-      <input type="email" name="email" id="email" required="required" value="<?php //echo htmlspecialchars($email);?>"/><span class="error">* <?php //echo $emailErr;?></span><br/><br />
-      <input type="submit" value=" Submit " name="submit"/>
-      <?php
-        if (isset($_GET["submit"])) {
-          // process the form contents...
-        } ?>
-  <br />
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="form-register">
+      <ul class="register-nav">
+				<li class="register-nav__item">
+					<a href="index.php">Sign In</a>
+				</li>
+				<li class="register-nav__item active">
+					<a href="register.php">Sign Up</a>
+				</li>
+			</ul>
+      <label for="register-input-user" class="register__label" > Username :</label>
+      <input type="text" name="username" id="register-input-user" class="register__input" required="required" value="<?php //echo htmlspecialchars($username);?>"/><span class="error"> <?php //echo $nameErr;?></span><br /><br />
+      <label for="register-input-password" class="register__label"> Password :</label>
+      <input type="password" name="password" id="register-input-password" class="register__input" required="required" value="<?php //echo htmlspecialchars($password);?>"/><span class="error"> <?php //echo $passErr;?></span><br/><br />
+      <label for="register-input-email" class="register__label"> Email :</label>
+      <input type="email" name="email" id="register-input-email" class="register__input" required="required" value="<?php //echo htmlspecialchars($email);?>"/><span class="error"> <?php //echo $emailErr;?></span><br/><br />
+      <button name="submit" type="submit" value="register" class="register__submit"> Register! </button>
+      <br/>
     </form>
   </div>
   <li class="login-nav__item">

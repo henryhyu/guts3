@@ -1,5 +1,5 @@
 <?php
-   require_once 'session.php';
+   require_once '../controllers/session.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
    <body>
       <div id="profile">
          <b id="welcome">Welcome home: <i><?php echo $login_session; ?></i></b>
-         <b id="logout"><a href="logout.php">Log Out</a></b>
+         <b id="logout"><a href="../controllers/logout.php">Log Out</a></b>
       </div>
 
       <div id="main">
