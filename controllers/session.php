@@ -1,13 +1,15 @@
 <?php
 require_once '../models/connect.php';
 
+$dbConnect = new dbConnect();
+
 session_start();// Starts the session
 
 // Storing the Session
 $user_check = $_SESSION['login_user'];
 
 // SQL Query To fetch information about the user
-$ses_sql = mysqli_query($db, "SELECT * FROM users WHERE username = '$user_check'");
+$ses_sql = mysqli_query($dbConnect->db, "SELECT * FROM users WHERE username = '$user_check'");
 // puts it into an associative array
 $row = mysqli_fetch_assoc($ses_sql);
 $login_session = $row['username'];

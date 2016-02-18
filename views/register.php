@@ -1,5 +1,6 @@
 <?php
 require_once '../models/connect.php';
+$dbConnect = new dbConnect();
 
 /*$nameErr = $passErr = $emailErr = "";
 $username = $password = $email = "";
@@ -91,16 +92,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']))
 		{
 		$sql = "INSERT INTO users(username, password, email) VALUES ('" . $_POST['username'] . "','" . $_POST['password'] . "','" . $_POST['email'] . "')";
-		if ($db->query($sql) === true)
+		if ($dbConnect->db->query($sql) === true)
 			{
 			echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
 			}
 		  else
 			{
-			echo "<script type= 'text/javascript'>alert('Error: " . $sql . '<br />' . $db->error . "');</script>";
+			echo "<script type= 'text/javascript'>alert('Error: " . $sql . '<br />' . $dbConnect->db->error . "');</script>";
 			}
 
-		$db->close();
+		$dbConnect->db->close();
 		}
 
 ?>

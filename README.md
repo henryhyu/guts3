@@ -1,2 +1,2 @@
 # guts3
-janky login/registration system
+less janky login/registration system

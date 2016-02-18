@@ -1,10 +1,13 @@
 <?php
 require '../models/connect.php';
+$dbConnect = new dbConnect(); // create new instance of dbConnect();
+
 // A session is a way to store information (in variables) to be used across multiple pages.
 // Unlike a cookie, the information is not stored on the users computer.
 session_start(); // Starts the PHP Session
 $error = ''; // Variable to store a potential error message
 
+// var_dump($dbConnect->db);
 // isset — Determine if a variable is set and is not NULL
 // empty — Determine whether a variable is empty
 if (isset($_POST['submit'])) {
@@ -19,12 +22,12 @@ if (isset($_POST['submit'])) {
         //$username = stripslashes($username);
         //$password = stripslashes($password);
         // Escape special characters in a string:
-        $username = mysqli_real_escape_string($db, $username);
-        $password = mysqli_real_escape_string($db, $password);
+        $username = mysqli_real_escape_string($dbConnect->db, $username);
+        $password = mysqli_real_escape_string($dbConnect->db, $password);
 
         // SQL query to fetch information for registered users.
         // mysqli_query performs a query on the database
-        $query = mysqli_query($db, "SELECT * FROM users WHERE password='$password' AND username='$username'") or die(mysqli_error($db));
+        $query = mysqli_query($dbConnect->db, "SELECT * FROM users WHERE password='$password' AND username='$username'") or die(mysqli_error($dbConnect->db));
         // mysqli_num_rows returns the number of rows in a result set
         $rows = mysqli_num_rows($query);
         if ($rows == 1) {
@@ -33,6 +36,6 @@ if (isset($_POST['submit'])) {
         } else {
             $error = 'The username or password you entered is invalid';
         }
-        mysqli_close($db); // Closes the connection
+        mysqli_close($dbConnect->db); // Closes the connection
     }
 }

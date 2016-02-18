@@ -3,6 +3,7 @@
 
    if (isset($_SESSION['login_user'])) {
        header('location: profile.php'); // The header() function sends a raw HTTP header to a client.
+       exit();
    }
 ?>
 
@@ -38,7 +39,7 @@
        					Keep me signed in
        				</label>
               <button name = "submit" type="submit" value="Log In" class="login__submit"> Sign In </button>
-              <span><?php echo $error; ?></span>
+              <span><?php if ($error) {echo "<script type= 'text/javascript'>alert('$error');</script>";} ?></span>
             </form>
             <a href="http://www.phpgang.com/how-to-create-forget-password-form-in-php_381.html" class="login__forgot">Forgot Password?</a>
          </div>
